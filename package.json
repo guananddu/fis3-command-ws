@@ -1,0 +1,39 @@
+{
+  "name": "fis3-command-ws",
+  "version": "1.0.2",
+  "description": "fis3 plugin for local server of mocking data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guananddu/fis3-command-ws.git"
+  },
+  "keywords": [
+    "fis3",
+    "mock",
+    "server"
+  ],
+  "author": "pooky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guananddu/fis3-command-ws/issues"
+  },
+  "homepage": "https://github.com/guananddu/fis3-command-ws#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "django": "^0.5.1",
+    "freemarker.js": "^1.2.2",
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.11.2",
+    "html2js": "^0.2.0",
+    "mkdirp": "^0.5.1",
+    "nsmarty": "0.0.1",
+    "request": "^2.69.0",
+    "shelljs": "^0.5.3",
+    "underscore": "^1.8.3",
+    "urlparse": "0.0.1",
+    "velocity": "^0.7.2"
+  }
+}
