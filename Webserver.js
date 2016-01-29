@@ -132,6 +132,18 @@ var reverseProxyLayer = function( req, res, next ) {
 
 module.exports = function( grunt ) {
 
+    // 在新版的npm本地安装依赖包策略下，需要改变当前的工作cwd才能使得grunt的load plugin正常工作
+    utils.clog.tell( 'Current work dir: ' + process.cwd() );
+    var nowWorkDir = path.join( process.cwd(), '../../' );
+    utils.clog.tell( 'Need change to: ' + nowWorkDir );
+    try {
+        process.chdir( nowWorkDir );
+        utils.clog.tell( 'Chdir succ!' );
+    }
+    catch ( err ) {
+        utils.clog.error( 'Chdir fail!' );
+    }
+
     var webconfigpath = grunt.option( 'configpath' );
     config = require( webconfigpath );
 
@@ -178,10 +190,10 @@ module.exports = function( grunt ) {
 
     } );
 
-    // 加载包含 "uglify" 任务的插件。
+    // 加载任务插件
     grunt.loadNpmTasks( 'grunt-contrib-connect' );
 
-    // 默认被执行的任务列表。
+    // 默认被执行的任务列表
     grunt.registerTask( 'default', [ 'connect' ] );
 
 };
