@@ -25,14 +25,14 @@ var answerForLess = function( data, req, res, fullpath ) {
         if ( err ) throw err;
         res.setHeader( 'Content-Type', 'text/css;charset=UTF-8' );
         res.end( css );
-        connectN();
+        // connectN();
     } );
 
 };
 
 exports.run = function( req, res, next, importConfig ) {
 
-    connectN = next;
+    // connectN = next;
 
     config = importConfig;
 

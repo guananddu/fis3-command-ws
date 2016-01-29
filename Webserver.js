@@ -21,8 +21,6 @@ var handlerRProxy = require( './handler/ws/reverse' );
 
 var config;
 
-var wsweinredebug;
-
 /**
  * onCreateServer
  * @param  {Object} server  [description]

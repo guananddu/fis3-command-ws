@@ -57,7 +57,7 @@ var make = function( url2filename, fullpath, req, res ) {
             
             setTimeout( function () {
                 res.end( JSON.stringify( context ) );
-                connectN();
+                // connectN();
             }, context.__sleep__ );
 
             return;
@@ -65,7 +65,7 @@ var make = function( url2filename, fullpath, req, res ) {
 
         res.end( JSON.stringify( context ) );
 
-        connectN();
+        // connectN();
 
     };
 
@@ -89,7 +89,7 @@ var create = function( url2filename, fullpath, req, res ) {
 
 exports.run = function( req, res, next, importConfig ) {
 
-    connectN = next;
+    // connectN = next;
 
     // debugger;
 

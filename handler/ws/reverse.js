@@ -20,7 +20,7 @@ var connectN;
 
 exports.run = function( req, res, next, importConfig, matcherKey ) {
 
-    connectN = next;
+    // connectN = next;
 
     // debugger;
 
@@ -54,7 +54,8 @@ exports.run = function( req, res, next, importConfig, matcherKey ) {
                     + ' use `readFileSync` to get image data' );
             }
             res.end( out );
-            return connectN();
+            return;
+            // return connectN();
         }
 
         // res.end( '' );

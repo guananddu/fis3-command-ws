@@ -26,13 +26,13 @@ var answerForAtpl = function( data, req, res, fullpath ) {
     } );
     res.end( out );
 
-    connectN();
+    // connectN();
 
 };
 
 exports.run = function( req, res, next, importConfig ) {
 
-    connectN = next;
+    // connectN = next;
 
     config = importConfig;
 

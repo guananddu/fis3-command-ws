@@ -65,16 +65,16 @@ var make = function( url2filename, fullpath, req, res ) {
         var output;
         engine.render( context, function ( o ) {
             output = o;
-            if ( config.wsweinredebug != 'off' ) {
-                // 需要注入script元素
-                return injects.weinre( config, output, function ( result ) {
-                    res.end( result );
-                    connectN();
-                } );
-            }
+            //if ( config.wsweinredebug != 'off' ) {
+            //    // 需要注入script元素
+            //    return injects.weinre( config, output, function ( result ) {
+            //        res.end( result );
+            //        // connectN();
+            //    } );
+            //}
 
             res.end( output );
-            connectN();
+            // connectN();
         } );
 
     };
@@ -138,7 +138,7 @@ var create = function( url2filename, fullpath, req, res ) {
 
 exports.run = function( req, res, next, importConfig ) {
 
-    connectN = next;
+    // connectN = next;
 
     // debugger;
 
