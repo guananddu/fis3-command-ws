@@ -17,8 +17,10 @@ var Engine = require( 'velocity' ).Engine;
 
 var config;
 
+var connectN;
+
 var make = function( url2filename, fullpath, req, res ) {
-    debugger;
+    // debugger;
 
     var dirname = path.dirname( fullpath );
     var commonPath = path.join(
@@ -55,12 +57,15 @@ var make = function( url2filename, fullpath, req, res ) {
             
             setTimeout( function () {
                 res.end( JSON.stringify( context ) );
+                connectN();
             }, context.__sleep__ );
 
             return;
         }
 
         res.end( JSON.stringify( context ) );
+
+        connectN();
 
     };
 
@@ -84,7 +89,9 @@ var create = function( url2filename, fullpath, req, res ) {
 
 exports.run = function( req, res, next, importConfig ) {
 
-    debugger;
+    connectN = next;
+
+    // debugger;
 
     config = importConfig;
 

@@ -12,9 +12,11 @@ var html2js = require( 'html2js' );
 
 var config;
 
+var connectN;
+
 var answerForAtpl = function( data, req, res, fullpath ) {
 
-    debugger;
+    // debugger;
 
     res.setHeader( 'Content-Type', 'application/javascript;charset=UTF-8' );
     // var modes = ['format', 'default', 'compress'];
@@ -24,9 +26,13 @@ var answerForAtpl = function( data, req, res, fullpath ) {
     } );
     res.end( out );
 
+    connectN();
+
 };
 
 exports.run = function( req, res, next, importConfig ) {
+
+    connectN = next;
 
     config = importConfig;
 

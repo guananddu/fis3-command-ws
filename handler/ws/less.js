@@ -12,9 +12,11 @@ var less = require( 'less' );
 
 var config;
 
+var connectN;
+
 var answerForLess = function( data, req, res, fullpath ) {
 
-    debugger;
+    // debugger;
 
     less.render( data.toString(), {
         paths: [ path.dirname( fullpath ) ], // Specify search paths for @import directives
@@ -23,11 +25,14 @@ var answerForLess = function( data, req, res, fullpath ) {
         if ( err ) throw err;
         res.setHeader( 'Content-Type', 'text/css;charset=UTF-8' );
         res.end( css );
+        connectN();
     } );
 
 };
 
 exports.run = function( req, res, next, importConfig ) {
+
+    connectN = next;
 
     config = importConfig;
 

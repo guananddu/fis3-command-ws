@@ -19,8 +19,10 @@ var engines = require( '../../common/engines' );
 
 var config;
 
+var connectN;
+
 var make = function( url2filename, fullpath, req, res ) {
-    debugger;
+    // debugger;
 
     var engine = engines.getEngine(
         path.join( config.webContent, url2filename ), config );
@@ -67,10 +69,12 @@ var make = function( url2filename, fullpath, req, res ) {
                 // 需要注入script元素
                 return injects.weinre( config, output, function ( result ) {
                     res.end( result );
+                    connectN();
                 } );
             }
 
             res.end( output );
+            connectN();
         } );
 
     };
@@ -134,7 +138,9 @@ var create = function( url2filename, fullpath, req, res ) {
 
 exports.run = function( req, res, next, importConfig ) {
 
-    debugger;
+    connectN = next;
+
+    // debugger;
 
     config = importConfig;
 

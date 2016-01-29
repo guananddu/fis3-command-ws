@@ -31,7 +31,7 @@ var wsweinredebug;
  */
 var onCreateServer = function( server, connect, options ) {
 
-    debugger;
+    // debugger;
     utils.clog.nor( 'WebServer Pid: ' + process.pid );
     utils.clog.nor( 'Running on port: ' + options.port );
 

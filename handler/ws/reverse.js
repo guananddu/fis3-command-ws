@@ -16,9 +16,13 @@ var requester = require( 'request' );
 
 var config;
 
+var connectN;
+
 exports.run = function( req, res, next, importConfig, matcherKey ) {
 
-    debugger;
+    connectN = next;
+
+    // debugger;
 
     config = importConfig;
 
@@ -34,7 +38,7 @@ exports.run = function( req, res, next, importConfig, matcherKey ) {
 
         utils.clog.tip( msg );
         
-        debugger;
+        // debugger;
 
         if ( !error && response.statusCode == 200 ) {
 
@@ -50,7 +54,7 @@ exports.run = function( req, res, next, importConfig, matcherKey ) {
                     + ' use `readFileSync` to get image data' );
             }
             res.end( out );
-            return;
+            return connectN();
         }
 
         // res.end( '' );
