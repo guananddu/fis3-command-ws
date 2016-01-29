@@ -21,10 +21,10 @@ var answerForLess = function( data, req, res, fullpath ) {
     less.render( data.toString(), {
         paths: [ path.dirname( fullpath ) ], // Specify search paths for @import directives
         compress: false // Minify CSS output
-    }, function( err, css ) {
+    }, function( err, output ) {
         if ( err ) throw err;
         res.setHeader( 'Content-Type', 'text/css;charset=UTF-8' );
-        res.end( css );
+        res.end( output.css );
         // connectN();
     } );
 
