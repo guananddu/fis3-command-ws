@@ -132,16 +132,27 @@ var reverseProxyLayer = function( req, res, next ) {
 
 module.exports = function( grunt ) {
 
-    // 在新版的npm本地安装依赖包策略下，需要改变当前的工作cwd才能使得grunt的load plugin正常工作
-    utils.clog.tell( 'Current work dir: ' + process.cwd() );
-    var nowWorkDir = path.join( process.cwd(), '../../' );
-    utils.clog.tell( 'Need change to: ' + nowWorkDir );
+    // 当前工作路径：fis3-command-ws
+    var shouldChangeDir = false;
     try {
-        process.chdir( nowWorkDir );
-        utils.clog.tell( 'Chdir succ!' );
+        fs.accessSync( path.resolve( 'node_modules/grunt-contrib-connect' ) );
+    } catch ( e ) {
+        // 不存在的话就需要更新工作目录
+        shouldChangeDir = true;
     }
-    catch ( err ) {
-        utils.clog.error( 'Chdir fail!' );
+
+    if ( shouldChangeDir ) {
+        // 在新版的npm本地安装依赖包策略下，需要改变当前的工作cwd才能使得grunt的load plugin正常工作
+        utils.clog.tell( 'Current work dir: ' + process.cwd() );
+        var nowWorkDir = path.join( process.cwd(), '../../' );
+        utils.clog.tell( 'Need change to: ' + nowWorkDir );
+        try {
+            process.chdir( nowWorkDir );
+            utils.clog.tell( 'Chdir succ!' );
+        }
+        catch ( err ) {
+            utils.clog.error( 'Chdir fail!' );
+        }
     }
 
     var webconfigpath = grunt.option( 'configpath' );
