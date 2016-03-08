@@ -1,6 +1,6 @@
 {
   "name": "fis3-command-ws",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "fis3 plugin for local server of mocking data",
   "main": "index.js",
   "scripts": {
