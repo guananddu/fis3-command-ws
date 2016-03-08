@@ -41,17 +41,30 @@ var make = function( url2filename, fullpath, req, res ) {
 
     var answer = function() {
 
+        // 输出ajax请求
+        utils.clog.tip( 'ajax: ' + req.url );
+
+        res.setHeader( 'Content-Type', 'text/html;charset=UTF-8' );
+
+        // 判断是不是纯粹的字符串等基本类型
+        var fullpathRequiredType = typeof( fullpathRequired );
+        if ( ~ [ 'number', 'string', 'boolean', 'undefined' ]
+                .indexOf( fullpathRequiredType ) ) {
+            return res.end( fullpathRequired );
+        }
+
+        // 如果是数组
+        if ( fullpathRequired instanceof Array ) {
+            return res.end( JSON.stringify( fullpathRequired ) );
+        }
+
+        // 以下考虑都是普通的Map(Object)类型
         // 判断是否为function
         if ( typeof( fullpathRequired ) == 'function' ) {
             // 带入请求对象，此function需要返回object
             fullpathRequired = fullpathRequired.call( req, urlparser( req.url ) );
         }
         var context = _.extend( commonPathRequired, fullpathRequired );
-
-        // 输出ajax请求
-        utils.clog.tip( 'ajax: ' + req.url );
-
-        res.setHeader( 'Content-Type', 'text/html;charset=UTF-8' );
 
         if ( context.__sleep__ ) {
             
