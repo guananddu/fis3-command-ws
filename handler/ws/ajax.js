@@ -48,9 +48,13 @@ var make = function( url2filename, fullpath, req, res ) {
 
         // 判断是不是纯粹的字符串等基本类型
         var fullpathRequiredType = typeof( fullpathRequired );
-        if ( ~ [ 'number', 'string', 'boolean', 'undefined' ]
+        if ( ~ [ 'number', 'string', 'boolean' ]
                 .indexOf( fullpathRequiredType ) ) {
-            return res.end( fullpathRequired );
+            return res.end( fullpathRequired.toString() );
+        }
+
+        if ( fullpathRequiredType == 'undefined' ) {
+            return res.end( 'undefined' );
         }
 
         // 如果是数组
